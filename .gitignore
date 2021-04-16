@@ -1,4 +1,5 @@
 config
+logs/
 
 ~/.vim/undodir/*
 ~/.vim/undodir/
