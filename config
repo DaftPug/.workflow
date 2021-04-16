@@ -1,0 +1,4 @@
+[remote "origin"]
+	url = https://github.com/DaftPug/.workflow.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+	pushurl = https://github.com/DaftPug/.workflow.git
