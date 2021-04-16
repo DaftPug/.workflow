@@ -1,1 +1,4 @@
 config
+
+~/.vim/undodir/*
+~/.vim/undodir/
