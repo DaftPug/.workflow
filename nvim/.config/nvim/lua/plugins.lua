@@ -43,4 +43,8 @@ return require('packer').startup(function()
   -- Commentary for easy commenting
   use { 'tpope/vim-commentary' }
   use { 'tpope/vim-surround' }
+
+
+  -- Calendar
+  use { 'itchyny/calendar.vim' }
 end)

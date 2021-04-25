@@ -11,6 +11,9 @@ cmd 'set inccommand=split'
 cmd 'set ts=4'
 cmd 'set sw=4'    
 
+-- Calendar.vim
+cmd 'let g:calendar_google_calendar=1'
+
 -- Global Options
 utils.opt('o', 'background', 'dark')
 utils.opt('o', 'backup', false)
