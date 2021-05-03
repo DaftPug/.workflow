@@ -89,19 +89,19 @@ for _, lsp in ipairs(servers) do
     }
 end
 -- set the path to the sumneko installation
-local sumneko_root_path = "/usr/share/lua-language-server"
-local sumneko_binary = "/usr/bin/lua-language-server"
--- Lua LSP. NOTE: This replaces the calls where you would have before done `require('nvim_lsp').sumneko_lu.setup()`
-require('nlua.lsp.nvim').setup(require('lspconfig'), {
-    capabilities = capabilities;
-    on_attach = on_attach;
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
-    init_options = {
-        onlyAnalyzeProjectsWithOpenFiles = true,
-        suggestFromUnimportedLibraries = false,
-        closingLabels = true,
-    };
-    settings = {
+-- local sumneko_root_path = "/usr/share/lua-language-server"
+-- local sumneko_binary = "/usr/bin/lua-language-server"
+-- -- Lua LSP. NOTE: This replaces the calls where you would have before done `require('nvim_lsp').sumneko_lu.setup()`
+-- require('nlua.lsp.nvim').setup(require('lspconfig'), {
+--     capabilities = capabilities;
+--     on_attach = on_attach;
+--     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+--     init_options = {
+--         onlyAnalyzeProjectsWithOpenFiles = true,
+--         suggestFromUnimportedLibraries = false,
+--         closingLabels = true,
+--     };
+--     settings = {
 
-    };
-})
+--     };
+-- })

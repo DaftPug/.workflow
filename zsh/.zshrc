@@ -6,7 +6,8 @@ export TERM=xterm-256color
 [ -n "$TMUX" ] && export TERM=screen-256color
 # export TERM="screen-256color"
 # export TERM="xterm-256color"
-export ZSH="/usr/share/oh-my-zsh"
+
+export ZSH="/Users/puggi/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -82,6 +83,8 @@ plugins=(
     npm
     man
     colored-man-pages
+    osx
+    iterm2
     #vi-mode
 )
 
@@ -198,14 +201,14 @@ alias itu_ul="rsync -avhe ssh ~/Projects/ITU\ Web/Procedural_Generation itu_serv
 alias itu_web="cd ~/Projects/ITU\ Web/"
 
 # general SSH
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
-fi
-if [[ ! "$SSH_AUTH_SOCK" ]]; then
-    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
-fi
+#if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+#    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+#fi
+#if [[ ! "$SSH_AUTH_SOCK" ]]; then
+#    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+#fi
 
-eval `keychain --eval --agents ssh id_rsa`
+#eval `keychain --eval --agents ssh id_rsa`
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
@@ -213,13 +216,13 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
-source /home/puggi/.profile
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source /Users/puggi/.profile
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
+
+export LANG="en_DK.UTF-8"
+export LC_ALL="en_DK.UTF-8"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -243,3 +246,4 @@ test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+

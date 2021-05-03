@@ -5,3 +5,5 @@ logs/
 ~/.vim/undodir/
 
 nvim/.config/nvim/~/.vim/undodir/
+
+nvim/.config/nvim/lua/~/.vim/undodir/

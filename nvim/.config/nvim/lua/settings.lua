@@ -11,6 +11,9 @@ cmd 'set inccommand=split'
 cmd 'set ts=4'
 cmd 'set sw=4'    
 
+-- Python executable
+cmd 'let g:python3_host_prog="/opt/homebrew/bin/python3"'
+
 -- Calendar.vim
 cmd 'let g:calendar_google_calendar=1'
 
@@ -42,6 +45,7 @@ utils.opt('o', 'showtabline', 2)
 utils.opt('o', 'hidden', true)
 utils.opt('o', 'scrolloff', 4 )
 utils.opt('o', 'shiftround', true)
+-- utils.opt('o', 'python3_host_prog', '/opt/homebrew/bin/python3')
 
 -- Buffer Local Options
 utils.opt('b', 'autoindent', true)

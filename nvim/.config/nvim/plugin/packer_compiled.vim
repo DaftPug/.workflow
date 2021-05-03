@@ -12,8 +12,43 @@ packadd packer.nvim
 try
 
 lua << END
-local package_path_str = "/home/puggi/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/puggi/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/puggi/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/puggi/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/puggi/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+  local time
+  local profile_info
+  local should_profile = false
+  if should_profile then
+    local hrtime = vim.loop.hrtime
+    profile_info = {}
+    time = function(chunk, start)
+      if start then
+        profile_info[chunk] = hrtime()
+      else
+        profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
+      end
+    end
+  else
+    time = function(chunk, start) end
+  end
+  
+local function save_profiles(threshold)
+  local sorted_times = {}
+  for chunk_name, time_taken in pairs(profile_info) do
+    sorted_times[#sorted_times + 1] = {chunk_name, time_taken}
+  end
+  table.sort(sorted_times, function(a, b) return a[2] > b[2] end)
+  local results = {}
+  for i, elem in ipairs(sorted_times) do
+    if not threshold or threshold and elem[2] > threshold then
+      results[i] = elem[1] .. ' took ' .. elem[2] .. 'ms'
+    end
+  end
+
+  _G._packer = _G._packer or {}
+  _G._packer.profile_output = results
+end
+
+time("Luarocks path setup", true)
+local package_path_str = "/Users/puggi/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/puggi/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/puggi/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/puggi/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/puggi/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -22,6 +57,8 @@ if not string.find(package.cpath, install_cpath_pattern, 1, true) then
   package.cpath = package.cpath .. ';' .. install_cpath_pattern
 end
 
+time("Luarocks path setup", false)
+time("try_loadstring definition", true)
 local function try_loadstring(s, component, name)
   local success, result = pcall(loadstring(s))
   if not success then
@@ -31,93 +68,131 @@ local function try_loadstring(s, component, name)
   return result
 end
 
+time("try_loadstring definition", false)
+time("Defining packer_plugins", true)
 _G.packer_plugins = {
+  ["calendar.vim"] = {
+    loaded = true,
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/calendar.vim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/friendly-snippets"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/friendly-snippets"
+  },
+  ["galaxyline.nvim"] = {
+    config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config/galaxyline\frequire\0" },
+    loaded = true,
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
   },
   ["gruvbox-material"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/gruvbox-material"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/gruvbox-material"
+  },
+  ["neuron.nvim"] = {
+    loaded = true,
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/neuron.nvim"
   },
   ["nlua.nvim"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/nlua.nvim"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/nlua.nvim"
   },
   ["nord-vim"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/nord-vim"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/nord-vim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
+  },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
   ["nvim-compe"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/nvim-compe"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-lsp"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/nvim-lsp"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/nvim-lsp"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/opt/packer.nvim"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/opt/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/popup.nvim"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+  },
+  ["train.nvim"] = {
+    loaded = true,
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/train.nvim"
   },
   ["vim-commentary"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/vim-commentary"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/vim-commentary"
   },
   ["vim-dispatch"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/vim-dispatch"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/vim-dispatch"
   },
   ["vim-fugitive"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/vim-fugitive"
   },
   ["vim-gitgutter"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/vim-gitgutter"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/vim-gitgutter"
   },
   ["vim-nightfly-guicolors"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/vim-nightfly-guicolors"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/vim-nightfly-guicolors"
   },
   ["vim-surround"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/vim-surround"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/vim-surround"
   },
   ["vim-vsnip"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/vim-vsnip"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/vim-vsnip"
   },
   ["vim-vsnip-integ"] = {
     loaded = true,
-    path = "/home/puggi/.local/share/nvim/site/pack/packer/start/vim-vsnip-integ"
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/vim-vsnip-integ"
+  },
+  vimwiki = {
+    loaded = true,
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/vimwiki"
   }
 }
+
+time("Defining packer_plugins", false)
+-- Config for: galaxyline.nvim
+time("Config for galaxyline.nvim", true)
+try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config/galaxyline\frequire\0", "config", "galaxyline.nvim")
+time("Config for galaxyline.nvim", false)
+if should_profile then save_profiles() end
 
 END
 

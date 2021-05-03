@@ -9,10 +9,12 @@ return require('packer').startup(function()
   use { 'arcticicestudio/nord-vim' }
 
   -- Fuzzy finder
-  use {
-      'nvim-telescope/telescope.nvim',
-      requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-  }
+  use { 'nvim-lua/plenary.nvim' }
+  use { 'nvim-lua/popup.nvim' }
+  use { 'nvim-telescope/telescope.nvim' }
+
+  -- Neuron.nvim
+   use { 'oberblastmeister/neuron.nvim', branch = 'unstable' } 
 
   -- LSP 
   use { 'neovim/nvim-lsp' }
@@ -27,6 +29,7 @@ return require('packer').startup(function()
   use { 'hrsh7th/vim-vsnip-integ' }
     --   
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-treesitter/playground' }
   
     -- Lua development
   use { 'tjdevries/nlua.nvim' }
@@ -44,7 +47,27 @@ return require('packer').startup(function()
   use { 'tpope/vim-commentary' }
   use { 'tpope/vim-surround' }
 
+  -- VimWiki
+  use { 'vimwiki/vimwiki' }
+
 
   -- Calendar
   use { 'itchyny/calendar.vim' }
+
+  -- Colors
+  use { 'norcalli/nvim-colorizer.lua' }
+
+  -- Training vim motions
+  use { 'tjdevries/train.nvim' }
+
+  -- Galaxyline
+  use {
+  'glepnir/galaxyline.nvim',
+    branch = 'main',
+    after = colorscheme,
+    -- your statusline
+    config = function() require'config/galaxyline' end,
+    -- some optional icons
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
 end)
