@@ -1,4 +1,3 @@
-config
 logs/
 
 ~/.vim/undodir/*
@@ -7,3 +6,7 @@ logs/
 nvim/.config/nvim/~/.vim/undodir/
 
 nvim/.config/nvim/lua/~/.vim/undodir/
+
+nvim/.config/nvim/lua/config/~/.vim/undodir/
+
+tmuxinator/.tmuxinator/~/.vim/undodir/

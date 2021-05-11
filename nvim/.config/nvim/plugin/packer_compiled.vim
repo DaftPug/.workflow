@@ -71,16 +71,28 @@ end
 time("try_loadstring definition", false)
 time("Defining packer_plugins", true)
 _G.packer_plugins = {
+  ["barbar.nvim"] = {
+    loaded = true,
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/barbar.nvim"
+  },
   ["calendar.vim"] = {
     loaded = true,
     path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/calendar.vim"
+  },
+  ["colorbuddy.nvim"] = {
+    loaded = true,
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim"
+  },
+  ["format.nvim"] = {
+    loaded = true,
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/format.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/friendly-snippets"
   },
   ["galaxyline.nvim"] = {
-    config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config/galaxyline\frequire\0" },
+    config = { "\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config/spaceline\frequire\0" },
     loaded = true,
     path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
   },
@@ -99,6 +111,10 @@ _G.packer_plugins = {
   ["nord-vim"] = {
     loaded = true,
     path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/nord-vim"
+  },
+  nordbuddy = {
+    loaded = true,
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/nordbuddy"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -133,6 +149,10 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/puggi/.local/share/nvim/site/pack/packer/opt/packer.nvim"
   },
+  playground = {
+    loaded = true,
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/playground"
+  },
   ["plenary.nvim"] = {
     loaded = true,
     path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/plenary.nvim"
@@ -140,6 +160,14 @@ _G.packer_plugins = {
   ["popup.nvim"] = {
     loaded = true,
     path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/popup.nvim"
+  },
+  taskwiki = {
+    loaded = true,
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/taskwiki"
+  },
+  ["telescope-fzy-native.nvim"] = {
+    loaded = true,
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -169,9 +197,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/vim-nightfly-guicolors"
   },
+  ["vim-plugin-AnsiEsc"] = {
+    loaded = true,
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/vim-plugin-AnsiEsc"
+  },
   ["vim-surround"] = {
     loaded = true,
     path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/vim-surround"
+  },
+  ["vim-taskwarrior"] = {
+    loaded = true,
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/vim-taskwarrior"
   },
   ["vim-vsnip"] = {
     loaded = true,
@@ -184,13 +220,22 @@ _G.packer_plugins = {
   vimwiki = {
     loaded = true,
     path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/vimwiki"
+  },
+  ["which-key.nvim"] = {
+    config = { "\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0" },
+    loaded = true,
+    path = "/Users/puggi/.local/share/nvim/site/pack/packer/start/which-key.nvim"
   }
 }
 
 time("Defining packer_plugins", false)
+-- Config for: which-key.nvim
+time("Config for which-key.nvim", true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
+time("Config for which-key.nvim", false)
 -- Config for: galaxyline.nvim
 time("Config for galaxyline.nvim", true)
-try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config/galaxyline\frequire\0", "config", "galaxyline.nvim")
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config/spaceline\frequire\0", "config", "galaxyline.nvim")
 time("Config for galaxyline.nvim", false)
 if should_profile then save_profiles() end
 

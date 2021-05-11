@@ -180,6 +180,9 @@ alias mux=tmuxinator
 # open a given project in tmux
 alias procedural="mux start procedural"
 alias qr_ar="mux start qr_ar"
+alias budgetty="mux start budgetty"
+alias datacleaner="mux start datacleaner"
+alias finances="mux start finances"
 
 ## ITU
 alias twitu='task add project:ITU'
@@ -247,3 +250,10 @@ export LC_ALL="en_DK.UTF-8"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
+# Created by `pipx` on 2021-05-11 08:36:42
+export PATH="$PATH:/Users/puggi/Library/Python/3.9/bin"
+
+autoload -U bashcompinit
+bashcompinit
+eval "$(register-python-argcomplete pipx)"

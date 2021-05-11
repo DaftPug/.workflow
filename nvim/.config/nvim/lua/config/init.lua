@@ -1,9 +1,34 @@
-require('config.colorscheme')
-require('config.compe')
-require('config.fugitive')
-require('config.autopairs')
-require('config.treesitter')
-require('config.efm-general')
-require('config.colorizer')
-require('config.galaxyline')
-require('config.neuron')
+require(
+    "config.colorscheme"
+)
+require(
+    "config.compe"
+)
+require(
+    "config.fugitive"
+)
+require(
+    "config.autopairs"
+)
+require(
+    "config.treesitter"
+)
+require(
+    "config.efm-general"
+)
+require(
+    "config.colorizer"
+)
+-- require('config.galaxyline')
+require(
+    "config.spaceline"
+)
+require(
+    "config.neuron"
+)
+require(
+    "config.format"
+)
+require(
+    "config.telescope"
+)
